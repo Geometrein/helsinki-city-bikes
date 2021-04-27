@@ -1,7 +1,9 @@
 # Helsinki City Bikes
 
 ## **About**
+
 This repository contains the code necessary to scrape, format and anlayze the publicly available data on Helsinki City Bike network.
+
 ---
 ## **What are Helsinki City bikes?**
 
@@ -35,7 +37,12 @@ pip install -r requirements.txt
 Start by running the main file.
 
 ---
-## **Resulting Dataset Structure**
+
+## **The Dataset**
+**Scraped and formatted dataset can be found here: [Link to Kaggle](https://www.kaggle.com/geometrein/helsinki-city-bikes)**
+
+---
+## **Structure**
 | departure           | return              | departure_id | departure_name  | return_id | return_name    | distance (m) | duration (sec.) | avg_speed (km/h)   | departure_coordinates                   | return_coordinates       | Air temperature (degC) |
 |---------------------|---------------------|--------------|-----------------|-----------|----------------|--------------|-----------------|--------------------|-----------------------------------------|--------------------------|------------------------|
 | 2020-03-23 07:43:51 | 2020-03-23 07:52:50 | 207          | Vanha Viertotie | 90.0      | Paciuksenkaari | 2409.0       | 534.0           | 0.2706741573033708 | (60.21107529627341, 24.881660254358646) | (60.1944475, 24.8911179) | 1.1                    |
