@@ -1,6 +1,8 @@
 import pandas as pd
 import constants
 
+import main
+
 def renameColumns(df):
     """
     """
