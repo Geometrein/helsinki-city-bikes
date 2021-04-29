@@ -25,10 +25,13 @@ def joinAll():
     """
     Join all .CSV files in datasets folder into one 
     """
+    print("Joining all .csv files")
     path = "data/datasets"
     all_files = os.listdir(path)
-    combined_csv = pd.concat([pd.read_csv(f"{path}/{filename}") for filename in all_files ])
+    files = list(filter(lambda f: f.endswith('.csv'), all_files))
+    combined_csv = pd.concat([pd.read_csv(f"{path}/{filename}") for filename in files ])
     combined_csv.to_csv( "data/database.csv", index=False, encoding='utf-8-sig')
+    print("database.csv successfully created")
 
 def main():
     """
@@ -80,5 +83,5 @@ def main():
 
 
 if __name__=="__main__":
-    main()
-    #joinAll()
+    #main()
+    joinAll()

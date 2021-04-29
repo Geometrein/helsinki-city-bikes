@@ -1,7 +1,16 @@
 import pandas as pd
 import constants
 
-import main
+def openCsv(filename):
+    """
+    Opening the CSV files & converting to Pandas DataFrames
+    """
+    try:
+        df = pd.read_csv("{}".format(filename), delimiter = "," )
+        print(" ✔ Dataframe {} loaded successfully.".format(filename))
+        return df
+    except:
+        print(" X Loading {} failed.".format(filename))
 
 def renameColumns(df):
     """
@@ -74,8 +83,17 @@ def mapCoordinates(dataframe, stations_df):
         coordinates[key] = values[i]
 
     df = dataframe.copy()
+
+    # Adding coordinates to trips as a tuple
     df["departure_coordinates"] = df["departure_name"].map(coordinates)
-    df["return_coordinates"] = df["return_name"].map(coordinates)
+    df["return_coordinates"] = df["departure_name"].map(coordinates)
+
+    # Spliting the tuple into separate columns
+    df[['departure_latitude', 'departure_longitude']] = pd.DataFrame(df['departure_coordinates'].tolist(), index=df.index)
+    df[['return_latitude', 'return_longitude']] = pd.DataFrame(df['return_coordinates'].tolist(), index=df.index)
+
+    df.drop(['departure_coordinates', 'return_coordinates'], axis = 1, inplace = True)
+
     return df
 
 def weatherConverter(dataframe):
@@ -135,9 +153,9 @@ def main():
     """
     year = input("\nPlease select the year:(2016-present)\n")
 
-    dataframe = main.open_csv(f"data/combined_data/{year}.csv")
-    weather_df = main.open_csv(f"data/weather/helsinki_weather_{year}.csv")
-    stations_df = main.open_csv("data/downloaded_data/station_coordinates.csv")
+    dataframe = openCsv(f"data/combined_data/{year}.csv")
+    weather_df = openCsv(f"data/weather/helsinki_weather_{year}.csv")
+    stations_df = openCsv("data/downloaded_data/station_coordinates.csv")
 
     # More usable names for columns
     dataframe = renameColumns(dataframe)
