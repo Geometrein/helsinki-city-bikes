@@ -140,4 +140,5 @@ dashboard
 # This allows to commit empty folders
 !data/combined_data/.gitkeep
 !data/downloaded_data/.gitkeep
+!data/downloaded_data/station_coordinates.csv
 !data/datasets/.gitkeep
