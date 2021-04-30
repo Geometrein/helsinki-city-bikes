@@ -33,21 +33,16 @@ def missingNames(df, df1):
     Stations can be missing if they are renamed. 
     The Renamed station and their new name should be added to RENAMED_STATIONS dictionary in constants.py
     """
-    new_name = []
-    # Dropping duplicates
-    df_temp = df.drop_duplicates(subset = "departure_name") 
+    # Get all station names from O-D dataset
+    column_values = df[["departure_name", "return_name"]].values.ravel()
+    unique_values =  pd.unique(column_values)
 
-    # Comparing the station names in two dataframes writing them to a new column
-    df_temp["Unique"] = df_temp["departure_name"][~df_temp["departure_name"].isin(df1["name"])]
-
-    # Droping NAN values
-    df_temp.dropna(inplace = True)
-
-    # Converting unique column to a list
-    new_name = df_temp["Unique"].tolist()
+    # Get available station coordinates
+    sations_with_coordinates = df1["name"].tolist()
+    missing_stations = set(unique_values).difference(sations_with_coordinates)
+    # Print Stations from O-D dataset that don't appear in station_coordinates.csv
     print("-------------------------------------------------------")
-    print(f"{len(new_name)} stations did not match with station_coordinates.csv.\nMissing stations are:")
-    for station in new_name:
+    for station in missing_stations:
         print(station)
     print("-------------------------------------------------------")
 
@@ -57,6 +52,7 @@ def replaceMissingStations(df):
     """
     df["departure_name"].replace(constants.RENAMED_STATIONS, inplace = True)
     df["return_name"].replace(constants.RENAMED_STATIONS, inplace = True)
+    print("Missing stations have been replaced")
     return df
 
 def dropStations(df):
@@ -66,6 +62,7 @@ def dropStations(df):
     stations_to_drop = ('Workshop', " ", "Bike Production", "Pop-Up")
     df = df[~df['departure_name'].astype(str).str.startswith(stations_to_drop)]
     df = df[~df['return_name'].astype(str).str.startswith(stations_to_drop)]
+    df.dropna(inplace=True)
     return df
 
 def mapCoordinates(dataframe, stations_df):

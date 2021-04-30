@@ -36,4 +36,7 @@ RENAMED_STATIONS = {
                     "Professorintie":"Laajalahden keskus",
                     "Lahnalahdentie":"Puistokaari",
                     "Niemenmäenkuja":"Huopalahdentie",
+                    "Messitytönkatu": "Länsisatamankatu",
+                    "Armas Launiksen katu": "Leppävaarankäytävä",
+                    "Kauppakartanonkuja": "Petter Wetterin tie"
                     }

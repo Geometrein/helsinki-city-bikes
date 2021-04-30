@@ -81,7 +81,10 @@ def main():
 
     df.to_csv(f"data/datasets/{year}.csv", index=False)
 
-
+    # Data info
+    print(df.info(), df.isna().sum())
+    print(f"{year} has been downloaded and cleaned")
+    
 if __name__=="__main__":
     #main()
     joinAll()
