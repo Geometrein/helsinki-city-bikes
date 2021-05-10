@@ -83,7 +83,7 @@ def mapCoordinates(dataframe, stations_df):
 
     # Adding coordinates to trips as a tuple
     df["departure_coordinates"] = df["departure_name"].map(coordinates)
-    df["return_coordinates"] = df["departure_name"].map(coordinates)
+    df["return_coordinates"] = df["return_name"].map(coordinates)
 
     # Spliting the tuple into separate columns
     df[['departure_latitude', 'departure_longitude']] = pd.DataFrame(df['departure_coordinates'].tolist(), index=df.index)

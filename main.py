@@ -86,5 +86,5 @@ def main():
     print(f"{year} has been downloaded and cleaned")
     
 if __name__=="__main__":
-    #main()
-    joinAll()
+    main()
+    #joinAll()
