@@ -55,5 +55,5 @@ Start by running the main file.
 - The origin-destination dataset was downloaded from [HSL Open Data portal](https://www.hsl.fi/en/hsl/open-data).
 
 - Weather data was gathered from [Finnish Meteorological Institute](https://en.ilmatieteenlaitos.fi/download-observations).
-- Bike Station Coordinates are scraped from [Digitransit](https://digitransit.fi/).
+- Bike Station Coordinates are scraped from [Digitransit](https://api.digitransit.fi/routing/v1/routers/hsl/bike_rental).
 ---
