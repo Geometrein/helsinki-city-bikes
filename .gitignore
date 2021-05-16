@@ -138,6 +138,7 @@ data/downloaded_data/*
 data/datasets/*
 data/database.csv
 dashboard
+legacy-code
 
 # This allows to commit empty folders
 !data/combined_data/.gitkeep
