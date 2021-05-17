@@ -5,7 +5,7 @@
 This repository contains the code necessary to scrape, format and anlayze the publicly available data on Helsinki City Bike network.
 
 ---
-![cover](images/cover.jpg)
+![cover](images/network_cover.png)
 ## **What are Helsinki City bikes?**
 
 - "Helsinki City Bikes" is a public bicycle system in Helsinki and Espoo and integrating with the rest of the public transport in Helsinki since May 2016. Its aim is to solve the so called [last mile problem](https://en.wikipedia.org/wiki/Last_mile_(transportation)).
