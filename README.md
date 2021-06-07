@@ -19,7 +19,7 @@ This repository contains the code necessary to scrape, format and anlayze the pu
 ## **Getting started?**
 
 ### **Dependencies**
-For m ore details see the "requirments.txt".
+For more details see the "requirments.txt".
 
 Quick install:
 ```
