@@ -90,6 +90,18 @@ def download_station_coordinates() -> dict:
 def map_stations_to_coordinates(input_df: pd.DataFrame, stations: dict) -> pd.DataFrame:
     input_df['departure_coordinates'] = input_df['departure_id'].map(stations)
     input_df['return_coordinates'] = input_df['return_id'].map(stations)
+
+    input_df[['departure_longitude', 'departure_latitude']] = pd.DataFrame(
+        input_df['departure_coordinates'].tolist(),
+        index=input_df.index
+    )
+
+    input_df[['return_longitude', 'return_latitude']] = pd.DataFrame(
+        input_df['return_coordinates'].tolist(),
+        index=input_df.index
+    )
+
+    input_df.drop(columns=['departure_coordinates', 'return_coordinates'], inplace=True)
     return input_df
 
 
@@ -108,7 +120,7 @@ def scraper_main() -> None:
 
     stations_dict = download_station_coordinates()
     yearly_df = map_stations_to_coordinates(input_df=yearly_df, stations=stations_dict)
-
+    print(yearly_df)
     csv_file_name = f'od_helsinki_city_bikes_{year}.csv'
     csv_file_path = os.path.join('..', 'data', 'datasets', csv_file_name)
     yearly_df.to_csv(csv_file_path, index=False)
